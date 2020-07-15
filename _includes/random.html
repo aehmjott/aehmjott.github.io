@@ -41,6 +41,17 @@
             return arr[arr.length * Math.random() | 0]
         }
 
+        function randomItems (arr, count) {
+            var result = []            
+            while (result.length < count || result.length === arr.length) {
+                var item = randomItem(arr)
+                if (result.indexOf(item) === -1) {
+                    result.push(item)        
+                }
+            }
+            return result
+        }
+
         function settings () {
             var iso = [100, 200, 400, 800, 1600]
             var time = ["1s", "1/2s", "1/10s", "1/25s", "1/50s", "1/100s", "1/500s", "1/1000s"]
@@ -50,10 +61,12 @@
 
             var equipment = ["Stativ",
                              "Blitz",
+                             "Reflektor",
                              "Filter",
                              "Zoom-Objektiv",
+                             "Wechselobjektiv",
                              "Ersatzakkus",
-                             "Fernauslöser",
+                             "Fernauslöser"
             ]
 
             var themes = ["Licht und Schatten", 
@@ -86,10 +99,10 @@
 
             document.getElementById("focal_length").innerHTML = randomItem(focal_lengths)
 
-            var equipment = 
+            var picked_equipment = randomItems(equipment, equipment.length / 4)
             document.getElementById("equipment").innerHTML = equipment.map(function(item) {
-                return "<span style='opacity:" + ((Math.random() < 0.5) ? 0.25 : 1.0).toString() + "' >" + item + "</span>"
-            }).join(" - ")
+                return "<span style='opacity:" + (picked_equipment.indexOf(item) === -1 ? 0.25 : 1.0).toString() + "' >" + item + "</span>"
+            }).join(" • ")
             
             document.getElementById("theme").innerHTML = randomItem(themes) 
         }
