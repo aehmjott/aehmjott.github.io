@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "Zufallsgenerator für Fotografen"
+date:   2020-07-15 10:00:00 +0200
+categories: photography
+---
+
+{% include random.html %}
