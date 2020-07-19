@@ -5,20 +5,25 @@
             table {
                 margin-bottom: 10px;
             }
+            
             table th, table td {
                 padding: 5px 7px;
             }
+
+            .imageContainer {
+                text-align: center;
+            }
+
             #captureImg {
                 margin-top: 10px;
                 width: 25%;
                 height: auto;
-            }   
+            }
         </style>
     </head>
     <body>
     
     <div id="content">
-
         <table>
             <tr>
                 <th> ISO </th>
@@ -57,9 +62,9 @@
     <button onclick="settings()"> Neu Laden </button>
     <button onclick="saveToCanvas()"> Als Bild speichern </button>
     
-<p>
-    <img id="captureImg" download="test.png"><img>
-</p>
+    <p class="imageContainer">
+        <img id="captureImg" download="test.png"><img>
+    </p>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
@@ -80,13 +85,26 @@
 
         function saveToCanvas () {
             var content = document.getElementById("content")
+            const h = content.style.height
+            const w = content.style.width
+
+            const sX = window.scrollX
+            const sY = window.scrollY
+
+            content.style.height = screen.heigth
+            content.style.width = screen.width
+
+            window.scrollTo(0,0)
+            
             var img = document.getElementById("captureImg")
             img.src = ""
-
+            
             html2canvas(content, {
-                scrollY: -window.scrollY
             }).then(function(canvas){
                  img.src = canvas.toDataURL("image/png")
+                 content.style.height = h
+                 content.style.width = w
+                 window.scrollTo(sX, sY)
             })
         }
 
