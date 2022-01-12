@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title></title>
+        <style>
+            
+            .card {
+                height: 200px;
+                width: 300px;
+
+                border: 1px solid gray;
+                box-shadow: 5px 5px 5px lightgray;
+                border-radius: 20px;
+                padding: 10px;
+                
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #cardContent {
+                text-align: center;
+                font-size: x-large;
+
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            
+            .inspiredBy {
+                margin-top: 50px;
+                font-size: small;            
+            }
+
+        </style>
+    </head>
+    <body>
+    
+    <div class="card" onclick="newQuestion()" title="Klickenfür eine neue Frage."> 
+        <div id="cardContent"> </div> 
+    </div>
+
+    <p class="inspiredBy">
+        Angelehnt an <a href="https://www.kylskapspoesi.com/de/kategorie/gespraechsstoff/">"Gesprächsstoff" von Kylskåpspoesi</a>
+    </p>
+    
+    <script>
+        function randomItem (arr) {
+            return arr[arr.length * Math.random() | 0]
+        }
+    
+        var questions = [
+            "Was ist dein Lieblingsbild eines anderen Fotografen?",
+            "Gibt es ein Foto auf das du besonders stolz bist?",
+            "Was ist deine Lieblingskamera?",
+            "Was ist dein Lieblingsobjektiv?",
+            "Was ist deine Lieblingsbrennweite?",
+            "Was war dein peinlichstes Erlebnis in Bezug auf Fotografie?",
+            "Am welchem Ort fotografierst du am liebsten?",
+            "Welches ist das beste Café nach einem langen Photowalk?",
+            "Wer ist dein fotografisches Vorbild?",
+            "Was ist dein Lieblingshilfsmittel?",
+            "Fotografierest du lieber analog oder digital?",
+            "Welcher Hersteller baut die besten Kameras?",
+            "Welche ist deine Traumkamera?",
+            "Wo willst du unbedingt mal ein Foto machen?",
+            "Fotografierst du lieber in Farbe oder Schwarz-Weiß?",
+            "Welchem Hashtag sollte man unbedingt auf Instagram folgen?",
+            "Welchem Account sollte man unbedingt auf Instagram folgen?",
+            "Stehst du lieber vor oder hinter der Kamera?",
+            "Welches Zitat zu Fotografie magst du besonders gern?",
+            "Welchen Tipp sollte jede/r Fotograf/in beachten?",
+            "Benutzt du liber ein Zoom-Objektiv oder eine Festbrennweite?",
+            "Was ist die Geschichte hinter deinem schlechtesten Foto?",
+            "Gehst du lieber zum Sonnenaufgang oder zum Sonnenuntergang fotografieren?",
+            "Was war dein größter Fehlkauf?",
+            "Was ist wichtiger, um gute Fotos zu machen: Talent oder Fleiß?",
+            "Welches ist dein Lieblingsbuch zu Fotografie?",
+            "Womit werden wir in 50 Jahren fotografieren?",
+            "Warum fotografierst du?",
+            "Was nervt dich am meisten am Hobby?",
+            "Was macht dir am meisten Spaß am Fotografieren?",
+            "Welcher Trend nervt dich?",
+            "Was motiviert dich?",
+            "Was willst du noch ausprobieren?",
+            "Worin bist du Experte?",
+            "Wie viel Nachbearbeitung ist erlaubt?", 
+            "Ist Fotografie Kunst? Bist du Künstler?",
+            "Welche Fotografieausstellung hat dir am besten gefallen?",
+            "Welches ist dein Lieblingstrivia?",
+            "Hast du zu viele Kameras oder zu wenig?",
+            "Was hälst du von Street Photography? Ist es Kunst oder verletzt es Persönlichkeitsrechte?",
+            "Welche Kamera nimmst du mit auf eine einsame Insel?",
+            "Wie bist du zur Fotografie gekommen?",
+            "Für wen fotografierst du?",
+            "Was war dein größter Erfolg auf Instagram?",
+            "Was ist deiner Lieblingsregel?",
+            "Was sagt deine Fotografie über dich aus?",
+            "Welche Geschichte willst du mit deinen Fotos erzählen?",
+            "Müssen Fotos ausgedruckt werden, damit richtig wirken können oder reicht ein Bildschirm?",
+            "Sagt ein Bild wirklich mehr als tausend Worte?",
+            "Wie viele Fotos machst du, bis ein Tolles dabei ist?",
+            "Sind Leica-Kameras ihr Geld wert oder nur ein Statussymbol?",
+            "Was können Leute nicht verstehen, die selbst nicht fotografieren?",
+            "Ist eine Kamera für dich ein Werkzeug oder ein Spielzeug?",
+            "Wie sehr stören dich Gebrauchsspuren an deiner Kamera?",
+            "Ist es okay, die Arbeit von Profifotografen zu kopieren?",
+            "Bestes Seitenverhältnis?",
+            "Was hälst du von Panoramas?",
+            "Welches Foto bringt dich zum weinen?",
+            "Welches Foto bringt dich zum Lachen?",
+            "Welches Foto macht dich wütend?",   
+            "Was ist der beste Film, in dem Fotografie eine Rolle spielt?",
+            "Was hast du zuletzt fotografiert?",
+            "Was möchtest du als nächstes fotografieren?",
+            "Kannst du dich an das erste Foto erinnern, was du gemacht hast?",
+            "Was würdest du fotografieren, wenn du eine Zeitmaschine hättest",
+            "Was ist deine Lieblingsdokumentation?",
+            "Welche drei Fotograf/innen lädst du sich einer Dinnerparty ein?",
+            "Ist Fotografie die Kunst des Weglassens?",
+            "Welche Art der Fotografie gefällt dir nicht?",
+            "Was hält dich davon ab noch mehr Fotos zu machen?",
+            "Wie würdest du dich kreativ ausleben, wenn du nicht fotografieren würdest?",
+        ]
+
+
+        function newQuestion () {
+            document.getElementById("cardContent").innerHTML = randomItem(questions)
+        }
+        newQuestion()
+           
+    </script>
+    </body>
+</html>
+
