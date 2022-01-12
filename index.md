@@ -4,3 +4,11 @@
 
 layout: home
 ---
+
+{% for tool in site.tools %}
+  <h2>
+    <a href="{{ tool.url }}">
+      {{ tool.title }}
+    </a>
+  </h2>
+{% endfor %}
